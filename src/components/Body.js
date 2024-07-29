@@ -28,6 +28,8 @@ const Body = () => {
     //converting data into json
     const json = await data.json();
 
+    //optional chaining -> if data is not present in current object then it will not go in next object
+
     //new live data displaying after rendering using optionall chaining
     //this is new latest live data
     setListOfRestaurant(
@@ -73,9 +75,9 @@ const Body = () => {
           onClick={() => {
             //filter logic
             const filteredList = listOfRestaurant.filter(
-              (res) => res.info.avgRating > 4.2
+              (res) => res?.info?.avgRating > 4.2
             );
-            setListOfRestaurant(filteredList);
+            setFilteredRestaurant(filteredList);
           }}
         >
           Top Rated Restaurant
