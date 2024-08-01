@@ -13,6 +13,10 @@ const Body = () => {
 
   //note -> whenever the react variable upadtes react triggers the reconcilition cycle(re renders the componenets)
 
+  //If no dependencie array in useEffect hook then useEffect is called on every render
+  //if the dependency array is empty([]) then useEffecct is called on initial render (just once)
+  //if the dependency array is [btnName] then useEffecct is called every time btnName is updated
+  //it will always called on initial render
   //use Effect hook -> this will call after the compelition of component render cycle.
   useEffect(() => {
     fetchData();
