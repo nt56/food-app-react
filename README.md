@@ -25,22 +25,6 @@ project is build using the react, tailwind and some other API and dependecies.
     Namaste Food
 
 
-# Food App Design
-<!-- Header
-    Logo
-    Nav Items
-Body
-    Search
-    RestaurantContainer
-        RestaurantCard
-            - Img
-            - Name of Res, Star Rating, cuisine, delery tie
-Footer
-    Copyright
-    Links
-    Address
-    Contact   -->
-
 
 # Two types of Export/Import
 
