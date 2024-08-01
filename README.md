@@ -26,7 +26,7 @@ project is build using the react, tailwind and some other API and dependecies.
 
 
 # Food App Design
-Header
+<!-- Header
     Logo
     Nav Items
 Body
@@ -39,7 +39,7 @@ Footer
     Copyright
     Links
     Address
-    Contact  
+    Contact   -->
 
 
 # Two types of Export/Import
