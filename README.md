@@ -70,3 +70,30 @@ project is build using the react, tailwind and some other API and dependecies.
     Install @babel/preset-react - to make JSX work in test cases
     Include @babel/preset-react inside my babel config
     npm i -D @testing-library/jest-dom
+
+
+# React lifeCycle method
+    - call parent constructor
+    - call parent render method
+    - if child component is exists then trigger to child component
+        -- call child constructor
+        -- call child render method
+        -- call child ComponentDidMount
+    - call parent ComponentDidMount
+
+
+- Parent Constructor
+- Parent Render
+    - first (class)Child Constructor
+    -  first (class)Child Render
+
+    - second (class)Child Constructor
+    - second (class)Child Render
+
+    (DOM Updated)
+    - first (class)Child componentDidMount
+    -  second (class)Child componentDidMount
+- Parent componentDidMount
+
+note -> refer diagram pdf for better understanding.
+ComponentDidMount is used for to make API calls.
