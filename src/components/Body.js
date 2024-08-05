@@ -2,22 +2,16 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { API } from "../utils/constants";
 
 const Body = () => {
-  //state variable -> whenever state variable updates react will re-render the component
-  const [listOfRestaurant, setListOfRestaurant] = useState([]);
+  const [listOfRestaurant, setListOfRestaurant] = useState([]); //state variable -> whenever state variable updates react will re-render the component
 
-  //another copy of the reastaurants for filtered rest
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]); //another copy of the reastaurants for filtered rest
 
   const [searchText, setSearchText] = useState("");
 
-  //note -> whenever the react variable upadtes react triggers the reconcilition cycle(re renders the componenets)
-
-  //If no dependencie array in useEffect hook then useEffect is called on every render
-  //if the dependency array is empty([]) then useEffecct is called on initial render (just once)
-  //if the dependency array is [btnName] then useEffecct is called every time btnName is updated
-  //it will always called on initial render
   //use Effect hook -> this will call after the compelition of component render cycle.
   useEffect(() => {
     fetchData();
@@ -25,17 +19,12 @@ const Body = () => {
 
   //fechData function logic
   const fetchData = async () => {
-    //fetching api using async await
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(API); //fetching api using async await
 
-    //converting data into json
-    const json = await data.json();
+    const json = await data.json(); //converting data into json
 
     //optional chaining -> if data is not present in current object then it will not go in next object
-
-    //new live data displaying after rendering using optionall chaining
+    //new live data displaying after rendering using optional chaining
     //this is new latest live data
     setListOfRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -46,6 +35,17 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <div>
+        <h1>Looks Like You Are Offline...!!</h1>
+        <h2>Please Check Your Internet Connection</h2>
+      </div>
+    );
+  }
 
   return listOfRestaurant.length === 0 ? (
     <Shimmer />

@@ -85,3 +85,11 @@
     padding: 10px;
     border: 1px solid black;
 }
+
+.footer {
+    background-color: gray;
+    padding: 30px 10px;
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+    margin-top: 50px;
+    text-align: center;
+}

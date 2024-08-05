@@ -13,7 +13,7 @@ const Header = () => {
 
       <div className="nav-items">
         <ul>
-          {/* Link tag help to move one page another without loading the page which mmakes our app fast this is why we cann react is single page applications*/}
+          {/* Link tag help to move one page another without loading the page which mmakes our app fast this is why we can react is single page applications*/}
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -22,6 +22,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li>Cart</li>
           <button

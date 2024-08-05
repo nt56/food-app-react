@@ -97,3 +97,13 @@ project is build using the react, tailwind and some other API and dependecies.
 
 note -> refer diagram pdf for better understanding.
 ComponentDidMount is used for to make API calls.
+
+
+
+#  Modularity is also known as:
+    - Chunking
+    - Code Splitting
+    - Dynamic Bundling
+    - Lazy Loading
+    - On-Demand Loading
+    - Dynamic Import
