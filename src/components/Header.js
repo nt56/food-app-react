@@ -6,29 +6,31 @@ const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-200 sm:bg-yellow-200 lg:bg-green-200 font-[500]">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="food-logo" />
+        <Link>
+          <img className="w-16 mx-6 mt-2" src={LOGO_URL} alt="food-logo" />
+        </Link>
       </div>
 
-      <div className="nav-items">
-        <ul>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
           {/* Link tag help to move one page another without loading the page which mmakes our app fast this is why we can react is single page applications*/}
-          <li>
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
           <button
-            className="login"
+            className="loginBtn"
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}

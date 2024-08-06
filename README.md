@@ -107,3 +107,14 @@ ComponentDidMount is used for to make API calls.
     - Lazy Loading
     - On-Demand Loading
     - Dynamic Import
+
+
+# styling methods
+    - Boostrap
+    - chakra UI
+    - Material UI
+    - Normal CSS
+    - Tailwind CSS
+    - Ant Design
+    - style components
+
