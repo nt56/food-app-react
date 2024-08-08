@@ -56,6 +56,7 @@ const Body = () => {
           <input
             type="text"
             className="search-box border-solid border-black"
+            placeholder="Enter Restaurant Name"
             value={searchText}
             //it will update the search text
             onChange={(e) => {

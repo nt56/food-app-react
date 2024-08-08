@@ -11,7 +11,7 @@ const RestaurantCard = (props) => {
   const { deliveryTime } = resData?.info?.sla;
 
   return (
-    <div className="m-4 p-4 w-[250px] bg-gray-100 rounded-lg hover:bg-gray-200 transition-all">
+    <div className="m-4 p-4 w-[250px] h-[90%] bg-gray-100 rounded-lg hover:bg-gray-200 transition-all">
       <div>
         <img
           className="w-[250px] h-[150px] rounded-lg"
@@ -28,7 +28,7 @@ const RestaurantCard = (props) => {
           <span className="icons">
             <AiOutlineStar />
           </span>
-          <span>{avgRating} stars</span>
+          <span> {avgRating} stars</span>
         </h4>
         <h4 className="item-price">
           <span style={{ marginLeft: "4px" }}></span> <span>{costForTwo}</span>
