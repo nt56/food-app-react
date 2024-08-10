@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withIsOpenLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -11,6 +11,8 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]); //another copy of the reastaurants for filtered rest
 
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardOpen = withIsOpenLabel(RestaurantCard);
 
   //use Effect hook -> this will call after the compelition of component render cycle.
   useEffect(() => {
@@ -99,7 +101,12 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {/** if res is open then show label open */}
+            {restaurant.info.isOpen ? (
+              <RestaurantCardOpen resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

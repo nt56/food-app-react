@@ -5,13 +5,11 @@ import { FiClock } from "react-icons/fi";
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
+  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
     resData?.info;
 
-  const { deliveryTime } = resData?.info?.sla;
-
   return (
-    <div className="m-4 p-4 w-[250px] h-[90%] bg-gray-100 rounded-lg hover:bg-gray-200 transition-all">
+    <div className="m-4 p-4 w-[250px] h-[450px] bg-gray-100 rounded-lg hover:bg-gray-200 transition-all">
       <div>
         <img
           className="w-[250px] h-[150px] rounded-lg"
@@ -37,11 +35,26 @@ const RestaurantCard = (props) => {
           <span className="icons">
             <FiClock />
           </span>
-          <span>{deliveryTime} minutes</span>
+          <span>{sla?.deliveryTime} minutes</span>
         </h4>
       </div>
     </div>
   );
+};
+
+//Higher Order Component --> New Card with isOpen or not Label
+//returns enhanced component
+export const withIsOpenLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-md">
+          Open
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

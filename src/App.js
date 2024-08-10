@@ -1,23 +1,37 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { useEffect, useState } from "react";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Footer from "./components/Footer";
+import UserContext from "./utils/UserContext";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    //make an API call and userName
+    data = {
+      name: "Nagu Tirth",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div>
-      <Header />
-      <Outlet /> {/* this outlet will fill component according to the path */}
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+      <div>
+        <Header />
+        <Outlet /> {/* this outlet will fill component according to the path */}
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 };
 
