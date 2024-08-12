@@ -118,3 +118,11 @@ ComponentDidMount is used for to make API calls.
     - Ant Design
     - style components
 
+
+# Redux Toolkit
+    - Install @redux/toolkit and react-redux
+    - build our own store
+    - connect our store to our app
+    - slice(cartSlice)
+    - dispatch(action)
+    - selector
