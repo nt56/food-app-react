@@ -1,4 +1,5 @@
 import ItemList from "./ItemList";
+import { IoIosArrowDown } from "react-icons/io";
 
 const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
   const handleClick = () => {
@@ -16,7 +17,9 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
           <span className="font-bold text-lg">
             {data.title}({data.itemCards.length})
           </span>
-          <span>⬇️</span>
+          <span>
+            <IoIosArrowDown />
+          </span>
         </div>
 
         {/* Accordian Body */}

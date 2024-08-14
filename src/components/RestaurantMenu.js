@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
     );
 
   return (
-    <div className="text-center">
+    <div className="text-center w-full">
       <h1 className="font-bold my-6 text-3xl">{name}</h1>
 
       <h3 className=" font-bold text-lg">

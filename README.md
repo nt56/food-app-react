@@ -126,3 +126,9 @@ ComponentDidMount is used for to make API calls.
     - slice(cartSlice)
     - dispatch(action)
     - selector
+
+
+# Types of Testing (developer)
+    - Unit Testing
+    - Integeration Testing
+    - End to End Testing

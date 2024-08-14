@@ -12,20 +12,23 @@ const Cart = () => {
   };
 
   return (
-    <div className="text-center m-4 p-4">
-      <h1 className="text-2xl font-bold">Cart Page</h1>
+    <div className="text-center w-full">
+      <h1 className="text-2xl font-bold mt-5">Cart Page</h1>
 
       <div className="w-6/12 m-auto">
+        {cartItems.length === 0 && (
+          <h1 className="mt-5">
+            Cart is empty...Please add the Items in The Cart
+          </h1>
+        )}
+        <ItemList items={cartItems} />
+
         <button
-          className="m-2 p-2 bg-black text-white rounded-lg"
+          className="mt-5 p-2 bg-black text-white rounded-lg w-[30%]"
           onClick={handleClearCart}
         >
           Clear Cart
         </button>
-        {cartItems.length === 0 && (
-          <h1>Cart is empty...Please add the Items in The Cart</h1>
-        )}
-        <ItemList items={cartItems} />
       </div>
     </div>
   );

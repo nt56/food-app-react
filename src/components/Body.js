@@ -52,13 +52,13 @@ const Body = () => {
   return listOfRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body ml-20">
-      <div className="filter flex">
-        <div className="search m-4 p-4">
+    <div className="body flex flex-col items-center w-full">
+      <div className="filter flex justify-center items-center w-[100%]">
+        <div className="search m-4 p-4 flex items-center justify-center">
           <input
             type="text"
-            className="search-box border-solid border-black"
-            placeholder="Enter Restaurant Name"
+            className="search-box border-black font-bold w-96 text-lg outline rounded-lg text-black bg-white text-ellipsis p-1"
+            placeholder="Enter Name or Keyword"
             value={searchText}
             //it will update the search text
             onChange={(e) => {
@@ -66,7 +66,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+            className="px-4 py-2 bg-green-700 m-4 rounded-lg text-white font-extrabold"
             onClick={() => {
               //filter the res cards and update the UI According to search
               const filteredRestaurantList = listOfRestaurant.filter((res) =>
@@ -81,7 +81,7 @@ const Body = () => {
 
         <div className="search m-4 p-4 flex items-center">
           <button
-            className="px-4 py-2 bg-gray-100 rounded-lg"
+            className="px-4 py-2 bg-red-500 rounded-lg text-white font-bold"
             onClick={() => {
               //filter logic
               const filteredList = listOfRestaurant.filter(
@@ -95,7 +95,7 @@ const Body = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex w-auto flex-wrap items-center justify-center self-stretch">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}

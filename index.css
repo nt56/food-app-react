@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.footer {
-    background-color: gray;
-    padding: 30px 10px;
-    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
-    text-align: center;
-    margin-top: 50px;
+/* Select all CSS Start*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "PT Sans", Calibri, sans-serif;
+    overflow-x: hidden;
 }
+  
+/* all link CSS */
+a {
+text-decoration: none;
+color: inherit;
+}
+
