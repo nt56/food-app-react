@@ -132,3 +132,13 @@ ComponentDidMount is used for to make API calls.
     - Unit Testing
     - Integeration Testing
     - End to End Testing
+
+
+# Setting up testing in our app
+    - Install react testing library
+    - Insatll jest
+    - Install Babel dependencies
+    - configure babel
+    - cofigure parcel config  file to disable default babel transpilation 
+    - jest configuration
+    - install jsdom library
