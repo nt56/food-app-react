@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import LoginSignup from "./components/LoginSignup";
 
 const AppLayout = () => {
   return (
@@ -45,6 +46,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/login-signup",
+        element: <LoginSignup />,
       },
       {
         path: "/restaurants/:resId",

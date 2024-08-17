@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoCartOutline } from "react-icons/io5";
 
 const Header = () => {
-  const [btnName, setBtnName] = useState("Login");
-
   //subscribing the store using selector
   const cartItems = useSelector((store) => store.cart.items);
 
@@ -38,16 +35,9 @@ const Header = () => {
             </Link>
           </li>
           <li className="px-4 hover:bg-orange-500 hover:rounded-lg hover:text-white">
-            <button
-              className="loginBtn"
-              onClick={() => {
-                btnName === "Login"
-                  ? setBtnName("Logout")
-                  : setBtnName("Login");
-              }}
-            >
-              {btnName}
-            </button>
+            <Link to="/login-signup">
+              <button>Login/SignUp</button>
+            </Link>
           </li>
         </ul>
       </div>
