@@ -27,7 +27,7 @@ const ItemList = ({ items }) => {
             </h4>
             <p className="text-xs">{item?.card?.info?.description}</p>
             <button
-              className="p-2 mt-5 rounded-lg bg-black shadow-lg w-[50%] text-white font-bold"
+              className="p-2 mt-5 ml-5 rounded-lg bg-black shadow-lg w-[50%] text-white font-bold transform transition-transform duration-300 hover:scale-105 hover:rounded-xl"
               onClick={() => handleAddItem(item)}
             >
               Add +

@@ -30,7 +30,9 @@ const Cart = () => {
           </div>
         )}
         <CartList items={cartItems} />
+      </div>
 
+      <div>
         <button
           className="mt-5 p-2 bg-red-800 text-white rounded-lg w-[30%] font-extrabold"
           onClick={handleClearCart}
