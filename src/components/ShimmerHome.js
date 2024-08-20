@@ -1,6 +1,6 @@
 const ShimmerHome = () => {
   return (
-    <div className="">
+    <div className="mt-10">
       <div className="flex items-center justify-center md:flex-row flex-col md:justify-between pl-10 pr-10 container mx-auto gap-6">
         <div className="flex items-center gap-3">
           <button className="w-[100px] bg-gray-400 h-[50px] rounded-3xl animate"></button>
