@@ -1,9 +1,9 @@
 import ItemList from "./ItemList";
 import { IoIosArrowDown } from "react-icons/io";
 
-const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
+const RestaurantCategory = ({ data, showItems, handleShowItem }) => {
   const handleClick = () => {
-    setShowIndex();
+    handleShowItem();
   };
 
   return (

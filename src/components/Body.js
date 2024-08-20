@@ -1,12 +1,12 @@
 import RestaurantCard, { withIsOpenLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
+import ShimmerHome from "./ShimmerHome";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { API } from "../utils/constants";
 
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurant] = useState([]); //state variable -> whenever state variable updates react will re-render the component
+  const [listOfRestaurant, setListOfRestaurant] = useState([]); //state variable -> whenever state variable updates react will re-render the component //whenever I have to filter then I use this state variaable
 
   const [filteredRestaurant, setFilteredRestaurant] = useState([]); //another copy of the reastaurants for filtered rest
 
@@ -52,7 +52,7 @@ const Body = () => {
   }
 
   return listOfRestaurant.length === 0 ? (
-    <Shimmer />
+    <ShimmerHome />
   ) : (
     <div className="body flex flex-col items-center w-full">
       <div className="filter flex justify-center items-center w-[100%]">
@@ -60,7 +60,7 @@ const Body = () => {
           <input
             type="text"
             className="search-box border-black font-bold w-96 text-lg outline rounded-lg text-black bg-white text-ellipsis p-1"
-            placeholder="Enter Name or Keyword"
+            placeholder="Enter Restaurant Name or Any Keyword"
             value={searchText}
             //it will update the search text
             onChange={(e) => {
@@ -81,7 +81,7 @@ const Body = () => {
           </button>
         </div>
 
-        <div className="search m-4 p-4 flex items-center">
+        <div className="filter m-4 p-4 flex items-center">
           <button
             className="px-4 py-2 bg-red-500 rounded-lg text-white font-bold"
             onClick={() => {

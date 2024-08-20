@@ -19,3 +19,6 @@ export const LINKEDIN_LINK =
 export const GITHUB_LINK = "https://github.com/nt56";
 
 export const LEETCODE_LINK = "https://leetcode.com/u/tirth_nagbhushan_22/";
+
+export const EMPTY_CART =
+  "https://cdn-icons-png.flaticon.com/512/11329/11329060.png";

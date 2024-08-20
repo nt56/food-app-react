@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import { removeItem } from "../utils/cartSlice";
 
-const ItemList = ({ items }) => {
+const CartList = ({ items }) => {
   const dispatch = useDispatch();
 
-  const handleAddItem = (item) => {
+  const handleRemoveItem = (item) => {
     //dispatch an action
-    dispatch(addItem(item));
+    dispatch(removeItem(item?.card?.info?.id));
   };
 
   return (
@@ -28,9 +28,9 @@ const ItemList = ({ items }) => {
             <p className="text-xs">{item?.card?.info?.description}</p>
             <button
               className="p-2 mt-5 rounded-lg bg-black shadow-lg w-[50%] text-white font-bold"
-              onClick={() => handleAddItem(item)}
+              onClick={() => handleRemoveItem(item)}
             >
-              Add +
+              Remove
             </button>
           </div>
 
@@ -49,4 +49,4 @@ const ItemList = ({ items }) => {
   );
 };
 
-export default ItemList;
+export default CartList;
