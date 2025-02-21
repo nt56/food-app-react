@@ -9,6 +9,7 @@ const RestaurantMenu = () => {
 
   const [showIndex, setShowIndex] = useState(null);
 
+  //custom hook
   const resInfo = useReastaurantMenu(resId);
 
   const handleShowItem = (currentIndex) => {

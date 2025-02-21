@@ -5,7 +5,6 @@ const CartList = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleRemoveItem = (item) => {
-    //dispatch an action
     dispatch(removeItem(item?.card?.info?.id));
   };
 
