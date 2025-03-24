@@ -59,8 +59,11 @@ const Body = () => {
         <div className="search m-4 p-4 flex items-center justify-center">
           <input
             type="text"
-            className="search-box border-black font-bold w-96 text-lg outline rounded-lg text-black bg-white text-ellipsis p-1"
-            placeholder="Enter Restaurant Name or Any Keyword"
+            className="w-96 p-3 text-lg font-semibold text-gray-800 bg-white border border-gray-300 
+             rounded-lg shadow-sm outline-none focus:ring-2 focus:ring-green-500 
+             focus:border-green-500 transition-all duration-300 ease-in-out 
+             placeholder-gray-500"
+            placeholder="🔍 Enter Restaurant Name or Keyword"
             value={searchText}
             //it will update the search text
             onChange={(e) => {
@@ -68,7 +71,9 @@ const Body = () => {
             }}
           />
           <button
-            className="px-4 py-2 bg-green-700 m-4 rounded-lg text-white font-extrabold"
+            className="px-6 py-4 bg-green-700 m-4 rounded-lg text-white font-extrabold shadow-md 
+             hover:bg-green-800 hover:scale-105 transition-all duration-300 ease-in-out
+             active:scale-95 focus:ring-2 focus:ring-green-500"
             onClick={() => {
               //filter the res cards and update the UI According to search
               const filteredRestaurantList = listOfRestaurant.filter((res) =>
@@ -83,7 +88,9 @@ const Body = () => {
 
         <div className="filter m-4 p-4 flex items-center">
           <button
-            className="px-4 py-2 bg-red-500 rounded-lg text-white font-bold"
+            className="px-6 py-4 bg-red-500 rounded-lg text-white font-bold shadow-md
+             hover:bg-red-600 hover:scale-105 transition-all duration-300 ease-in-out
+             active:scale-95 focus:ring-2 focus:ring-red-400"
             onClick={() => {
               //filter logic
               const filteredList = listOfRestaurant.filter(

@@ -9,33 +9,34 @@ const RestaurantCard = (props) => {
     resData?.info;
 
   return (
-    <div className="m-4 p-4 w-[250px] h-[450px] bg-gray-200 rounded-lg hover:bg-gray-300 transition-all shadow-xl">
+    <div className="m-4 p-4 w-[260px] h-[450px] hover:shadow-2xl bg-white rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer border border-gray-200">
       <div>
         <img
-          className="w-[250px] h-[150px] rounded-lg"
+          className="w-[260px] h-[160px] rounded-2xl object-cover"
           alt="food-img"
           src={CDN_URL + cloudinaryImageId}
         />
       </div>
 
-      <div>
-        <h3 className="font-bold text-lg py-4">{name}</h3>
-        <em className="">{cuisines.join(", ")}</em>
-        <h4 className="avg-rating flex items-center pt-1 gap-1">
-          <span className="icons">
-            <AiOutlineStar />
-          </span>
-          <span> {avgRating} stars</span>
-        </h4>
-        <h4 className="item-price pt-1 flex">
-          <span style={{ marginLeft: "4px" }}></span> <span>{costForTwo}</span>
-        </h4>
-        <h4 className="time flex items-center pt-1 gap-1">
-          <span className="icons">
-            <FiClock />
-          </span>
-          <span>{sla?.deliveryTime} minutes</span>
-        </h4>
+      <div className="p-4">
+        <h3 className="font-extrabold text-xl text-gray-800 pb-2">{name}</h3>
+        <em className="text-gray-600 text-sm block pb-2">
+          {cuisines.join(", ")}
+        </em>
+
+        <div className="flex items-center text-gray-700 text-sm font-medium gap-1 pb-2">
+          <AiOutlineStar className="text-yellow-500 text-lg" />
+          <span>{avgRating} stars</span>
+        </div>
+
+        <div className="text-gray-700 text-sm font-medium pb-2">
+          <span className="font-semibold">Price: </span> {costForTwo}
+        </div>
+
+        <div className="flex items-center text-gray-700 text-sm font-medium gap-1">
+          <FiClock className="text-gray-500 text-lg" />
+          <span>{sla?.deliveryTime} min delivery</span>
+        </div>
       </div>
     </div>
   );
@@ -46,10 +47,10 @@ const RestaurantCard = (props) => {
 export const withIsOpenLabel = (RestaurantCard) => {
   return (props) => {
     return (
-      <div>
-        <label className="absolute bg-black text-white m-2 p-2 rounded-md">
+      <div className="relative">
+        <span className="absolute top-2 left-2 bg-black text-white text-xs font-semibold px-2 py-1 rounded-md shadow-md z-10">
           Open
-        </label>
+        </span>
         <RestaurantCard {...props} />
       </div>
     );
