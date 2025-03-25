@@ -2,25 +2,61 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="flex flex-wrap m-7 items-center justify-around gap-5">
-      <div className="flex flex-wrap flex-col justify-start items-start overflow-y-hidden">
-        <h1 className="text-[50px] text-gray-800 font-bold">
-          Welcome to <br /> The world of <br />
+    <div className="max-w-5xl mt-8 mx-auto p-6 bg-white shadow-2xl rounded-lg">
+      {/* Welcome Section */}
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-gray-800 leading-snug">
+          Welcome to <br />
+          The world of{" "}
           <span className="bg-orange-400 px-2 rounded-lg">
             Tasty & Fresh Food
           </span>
         </h1>
-        <h4 className="text-[25px]  mt-2 font-serif text-green-700">
-          "Better you will feel if you eat a Food<span>Fire</span> healthy meal"
+        <h4 className="text-xl mt-2 font-serif text-green-700 italic">
+          "You'll feel better when you enjoy a healthy meal at{" "}
+          <span className="text-orange-500 font-semibold">FoodFire</span>."
         </h4>
       </div>
 
-      <div className="flex flex-wrap flex-col justify-center items-center">
-        <img
-          src="https://png.pngtree.com/png-vector/20200417/ourmid/pngtree-order-food-online-via-the-mobile-application-png-image_2180626.jpg"
-          alt="food image"
-          className="rounded-lg w-[500px]"
-        />
+      {/* About Section */}
+      <div className="mb-6">
+        <h2 className="text-[40px] font-extrabold text-orange-500 mb-4">
+          About Our Food App
+        </h2>
+        <p className="text-gray-700 mb-4">
+          Welcome to <span className="font-semibold">Food App</span>, your go-to
+          platform for exploring delicious meals, browsing menus, and ordering
+          your favorite dishes online. Our app is built to provide a seamless
+          and enjoyable food ordering experience.
+        </p>
+      </div>
+
+      {/* Features Section */}
+      <div className="mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-3">Features</h2>
+        <ul className="list-disc list-inside text-gray-700 space-y-2">
+          <li>🔥 Browse and explore a variety of cuisines</li>
+          <li>🛒 Add items to your cart and place orders effortlessly</li>
+          <li>👤 User authentication with Firebase</li>
+          <li>⚡ Real-time state management using Redux</li>
+          <li>🔄 Smooth navigation with React Router</li>
+          <li>🎨 Beautiful and responsive UI with Tailwind CSS</li>
+        </ul>
+      </div>
+
+      {/* Technologies Used */}
+      <div className="mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-3">
+          Technologies Used
+        </h2>
+        <div className="grid grid-cols-2 gap-4 text-gray-700">
+          <span>✅ React.js</span>
+          <span>✅ Firebase Auth</span>
+          <span>✅ Redux Toolkit</span>
+          <span>✅ React Router</span>
+          <span>✅ Tailwind CSS</span>
+          <span>✅ React Hooks</span>
+        </div>
       </div>
     </div>
   );

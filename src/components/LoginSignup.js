@@ -1,78 +1,157 @@
-import React, { useState } from "react";
-import user_icon from "../components/Assets/person.png";
-import email_icon from "../components/Assets/email.png";
-import password_icon from "../components/Assets/password.png";
+import React, { useState, useRef } from "react";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+import { checkValidData } from "../utils/validate";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
-  const [action, setAction] = useState("Sign Up");
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [password, setPassword] = useState(true);
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const Password = useRef(null);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const toggelSignInFrom = () => {
+    setIsSignInForm(!isSignInForm);
+  };
+
+  const handleHideShow = () => {
+    setPassword(!password);
+  };
+
+  //Sign In or Sign Up Operation Logic
+  const handleButtonClick = () => {
+    //form data validation
+    const message = checkValidData(email.current.value, Password.current.value);
+    setErrorMessage(message);
+    if (message) return; //if it has error then it return don't go ahead
+
+    if (!isSignInForm) {
+      //Sign Up Logic - as soon as user signin we immediately update the photo url
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        Password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+          })
+            .then(() => {
+              // Profile updated! and add user info again here
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                })
+              );
+              navigate("/");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    } else {
+      //Sign In Logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        Password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          dispatch(
+            addUser({
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+            })
+          );
+          navigate("/");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    }
+  };
 
   return (
-    <div className="container flex w-[600px] h-fit flex-col m-auto mt-24 bg-white pb-7">
-      <div className="header flex flex-col items-center gap-2 w-[100%]">
-        <div className="text text-black text-[48px] font-[700]">{action}</div>
-      </div>
-
-      <div className="inputs m-14 flex flex-col gap-6">
-        {action === "Sign In" ? (
-          <div></div>
-        ) : (
-          <div className="input flex items-center m-auto w-[480px] h-[80px] bg-[#eaeaea] rounded-md">
-            <img
-              src={user_icon}
-              alt="user-icon"
-              className="my-[0px] mx-[30px]"
-            />
-            <input
-              type="text"
-              placeholder="Name"
-              className="h-[50px] w-[400px] bg-transparent border-none outline-none text-[#797979] font-[19px]"
-            />
-          </div>
+    <div className="w-screen">
+      <form
+        className="w-full md:w-3/12  p-12 bg-black mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <h1 className="font-bold text-3xl py-3">
+          {isSignInForm ? "Sign In" : "Sign Up"}
+        </h1>
+        {!isSignInForm && (
+          <input
+            ref={name}
+            type="text"
+            placeholder="Name"
+            required
+            className="p-4 my-4 w-full bg-gray-700"
+          />
         )}
-        <div className="input flex items-center m-auto w-[480px] h-[80px] bg-[#eaeaea] rounded-md">
-          <img
-            src={email_icon}
-            alt="email-icon"
-            className="my-[0px] mx-[30px]"
-          />
+        <input
+          ref={email}
+          type="text"
+          placeholder="Email"
+          required
+          className="p-4 my-4 w-full bg-gray-700"
+        />
+        <div className="flex justify-between items-center w-full bg-gray-700 my-4 relative">
           <input
-            type="email"
-            placeholder="Email ID"
-            className="h-[50px] w-[400px] bg-transparent border-none outline-none text-[#797979] font-[19px]"
-          />
-        </div>
-        <div className="input flex items-center m-auto w-[480px] h-[80px] bg-[#eaeaea] rounded-md">
-          <img
-            src={password_icon}
-            alt="password-icon"
-            className="my-[0px] mx-[30px]"
-          />
-          <input
-            type="password"
+            ref={Password}
+            type={password ? "password" : "text"}
             placeholder="Password"
-            className="h-[50px] w-[400px] bg-transparent border-none outline-none text-[#797979] font-[19px]"
+            required
+            className="p-4 h-fit w-full bg-gray-700"
           />
+          <div
+            className="cursor-pointer absolute ml-[22rem] text-xl"
+            onClick={handleHideShow}
+          >
+            {password ? <FaEye /> : <FaEyeSlash />}
+          </div>
         </div>
-      </div>
-
-      <div className="submit-container flex gap-7 my-[10px] mx-auto">
-        <div
-          className={action === "Sign In" ? "submit gray" : "submit"}
-          onClick={() => {
-            setAction("Sign Up");
-          }}
+        <p className="text-white font-bold text-lg py-2">{errorMessage}</p>
+        <button
+          className="p-4 my-6 bg-red-700 w-full rounded-lg"
+          onClick={handleButtonClick}
         >
-          Sign Up
-        </div>
-        <div
-          className={action === "Sign Up" ? "submit gray" : "submit"}
-          onClick={() => {
-            setAction("Sign In");
-          }}
-        >
-          Sign In
-        </div>
-      </div>
+          {isSignInForm ? "Sign In" : "Sign Up"}
+        </button>
+        <p className="py-4 cursor-pointer font-bold" onClick={toggelSignInFrom}>
+          {isSignInForm
+            ? "New User? Sign Up Now"
+            : "Already Registerd? Sign In Now"}
+        </p>
+      </form>
     </div>
   );
 };

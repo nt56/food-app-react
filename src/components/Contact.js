@@ -28,11 +28,14 @@ const Contact = () => {
           <p>
             <span>Email - </span>tirthnagbhushan56@gmail.com
           </p>
+          <p>
+            <span>Address - </span>Pune, Maharastra
+          </p>
         </div>
         <div className="bg-slate-900 text-white p-4 rounded-sm">
           <p className="pb-4 text-lg text-slate-300 text-center font-bold">
-            Front end Developer | React Js | JavaScript | HTML5 | CSS3 |
-            Tailwind CSS | Exploring MERN | Exploring DSA
+            Fresher | MERN Developer | Frontend | Backend | JavaScript |
+            React.js | Node.js | Tailwind | Core Java | SQL | MongoDB
           </p>
           <div className=" text-[2em] text-center w-full flex items-center mt-2 justify-evenly">
             <a
