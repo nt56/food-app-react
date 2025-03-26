@@ -11,10 +11,10 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const LoginSignup = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [password, setPassword] = useState(true);
 
   const name = useRef(null);
@@ -36,7 +36,7 @@ const LoginSignup = () => {
   const handleButtonClick = () => {
     //form data validation
     const message = checkValidData(email.current.value, Password.current.value);
-    setErrorMessage(message);
+    toast.error(message);
     if (message) return; //if it has error then it return don't go ahead
 
     if (!isSignInForm) {
@@ -61,17 +61,18 @@ const LoginSignup = () => {
                   displayName: displayName,
                 })
               );
-              navigate("/");
+              toast.success("Registration Successful...!");
             })
             .catch((error) => {
               // An error occurred
               setErrorMessage(error.message);
+              toast.error(error.message);
             });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + " - " + errorMessage);
+          toast.error(errorCode + " - " + errorMessage);
         });
     } else {
       //Sign In Logic
@@ -89,12 +90,13 @@ const LoginSignup = () => {
               displayName: user.displayName,
             })
           );
-          navigate("/");
+          toast.success("Login Successful...!");
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + " - " + errorMessage);
+          toast.error(errorCode + " - " + errorMessage);
         });
     }
   };
@@ -139,7 +141,6 @@ const LoginSignup = () => {
             {password ? <FaEye /> : <FaEyeSlash />}
           </div>
         </div>
-        <p className="text-white font-bold text-lg py-2">{errorMessage}</p>
         <button
           className="p-4 my-6 bg-red-700 w-full rounded-lg"
           onClick={handleButtonClick}

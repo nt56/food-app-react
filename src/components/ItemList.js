@@ -1,11 +1,13 @@
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
+import { toast } from "react-toastify";
 
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {
     dispatch(addItem(item));
+    toast.success(`${item?.card?.info?.name} Added to cart..`);
   };
 
   return (

@@ -12,16 +12,21 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import LoginSignup from "./components/LoginSignup";
+import { ToastContainer } from "react-toastify";
 
 const AppLayout = () => {
   return (
-    <Provider store={appStore}>
-      <div className="flex flex-col items-center justify-between min-h-[100vh]">
-        <Header />
-        <Outlet /> {/* this outlet will fill component according to the path */}
-        <Footer />
-      </div>
-    </Provider>
+    <>
+      <ToastContainer />
+      <Provider store={appStore}>
+        <div className="flex flex-col items-center justify-between min-h-[100vh]">
+          <Header />
+          <Outlet />{" "}
+          {/* this outlet will fill component according to the path */}
+          <Footer />
+        </div>
+      </Provider>
+    </>
   );
 };
 
@@ -33,7 +38,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <LoginSignup />,
       },
       {
         path: "/about",
@@ -48,8 +53,8 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/login-signup",
-        element: <LoginSignup />,
+        path: "/browse",
+        element: <Body />,
       },
       {
         path: "/restaurants/:resId",

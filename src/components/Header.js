@@ -1,3 +1,4 @@
+// import { useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,12 +6,12 @@ import { IoCartOutline } from "react-icons/io5";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
 import { auth } from "../utils/firebase";
-// import { useEffect } from "react";
 
 const Header = () => {
   //subscribing the store using selector
   const cartItems = useSelector((store) => store.cart.items);
   const user = useSelector((store) => store.user);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,10 +34,10 @@ const Header = () => {
   //     if (user) {
   //       const { uid, email, displayName } = user;
   //       dispatch(addUser({ uid, email, displayName }));
-  //       navigate("/");
+  //       navigate("/browse");
   //     } else {
   //       dispatch(removeUser());
-  //       navigate("/login-signup");
+  //       navigate("/");
   //     }
   //   });
 
@@ -55,7 +56,7 @@ const Header = () => {
         <ul className="flex p-4 m-4 font-bold">
           {/* Link tag help to move one page another without loading the page which mmakes our app fast this is why we can react is single page applications*/}
           <li className="px-4 hover:bg-orange-500 hover:rounded-lg hover:text-white ">
-            <Link className="text-lg" to="/">
+            <Link className="text-lg" to="/browse">
               Home
             </Link>
           </li>
@@ -78,7 +79,7 @@ const Header = () => {
           </li>
           {user ? (
             <li className="px-4 hover:bg-orange-500 hover:rounded-lg hover:text-white">
-              <Link to="/login-signup">
+              <Link to="/">
                 <button className="text-lg" onClick={handleLogOut}>
                   Logout
                 </button>
@@ -86,7 +87,7 @@ const Header = () => {
             </li>
           ) : (
             <li className="px-4 hover:bg-orange-500 hover:rounded-lg hover:text-white">
-              <Link to="/login-signup">
+              <Link to="/">
                 <button className="text-lg">Login/SignUp</button>
               </Link>
             </li>
