@@ -17,7 +17,7 @@ import { ToastContainer } from "react-toastify";
 const AppLayout = () => {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" autoClose={2000} />
       <Provider store={appStore}>
         <div className="flex flex-col items-center justify-between min-h-[100vh]">
           <Header />
